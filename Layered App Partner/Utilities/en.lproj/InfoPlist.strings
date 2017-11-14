@@ -1,0 +1,13 @@
+/* 
+  InfoPlist.strings
+  Partner App
+
+  Created by Gustavo Serra on 19/10/2017.
+  Copyright © 2017 iHealthLabs. All rights reserved.
+*/
+
+"CFBundleDisplayName" = "Partner App";
+"CFBundleName" = "Partner App";
+
+"NSCameraUsageDescription" = "We use your camera to take a profile image.";
+"NSPhotoLibraryUsageDescription" = "We use your photo gallery to add a profile picture.";

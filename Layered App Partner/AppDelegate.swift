@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,7 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        IQKeyboardManager.sharedManager().enable = true
+        
+        if !UserDefaults.standard.bool(forKey: "session") {
+            
+            self.window?.rootViewController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "SignInViewController")
+            self.window?.makeKeyAndVisible()
+        }
+        
         return true
     }
 
@@ -41,6 +50,81 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+        if url.scheme == "ihealth-layered-partner" {
+            
+            let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
+            let queryItems: [URLQueryItem]? = urlComponents?.queryItems
+            
+            let status = queryItems?.filter { return $0.name == "status" }
+            
+            if status?.first?.value == "3855" {
+                
+                let macQueryItem = queryItems?.filter { return $0.name == "mac" }
+                let resultQueryItem = queryItems?.filter { return $0.name == "result" }
+                
+                if let mac = macQueryItem?.first?.value {
+                    
+                    print("MAC: " + mac)
+                    UserDefaults.standard.set(mac, forKey: "MAC_ID")
+                }
+                
+                if let stringResult = resultQueryItem?.first?.value {
+                    
+                    var arrayResult: [Dictionary<String,String>]?
+                    
+                    if let dataResult = stringResult.data(using: .utf8) {
+                        
+                        do {
+                            arrayResult = try JSONSerialization.jsonObject(with: dataResult, options: []) as? Array
+                        } catch {
+                            print(error.localizedDescription)
+                        }
+                    }
+                    
+                    if let newWeight = arrayResult?.first {
+                        
+                        print("Weight readed: \(String(describing: newWeight["weight"])) at \(String(describing: newWeight["measured_at"]))")
+                        
+                        var weights: [Dictionary<String,Any>]? = UserDefaults.standard.value(forKey: "WEIGHTS") as? [Dictionary<String,Any>]
+                        
+                        if let _ = weights {
+                            
+                            weights?.append(newWeight)
+                            
+                            UserDefaults.standard.set(weights, forKey: "WEIGHTS")
+                        } else {
+                            
+                            UserDefaults.standard.set([newWeight], forKey: "WEIGHTS")
+                        }
+                    }
+                }
+                
+                UserDefaults.standard.synchronize()
+                
+                let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let weightViewController = mainStoryboard.instantiateViewController(withIdentifier: "WeightsViewController")
+                
+                self.window?.rootViewController = weightViewController
+                self.window?.makeKeyAndVisible()
+            } else if status?.first?.value == "1" {
+                
+                let errorQueryItem = queryItems?.filter { return $0.name == "reason" }
+                
+                if let error = errorQueryItem?.first?.value {
+                    
+                    print("Error: " + error)
+                }
+            } else {
+                
+                print("User canceled the operation ")
+            }
+            
+            return true
+        }
+        
+        return false
+    }
 }
 

@@ -1,0 +1,37 @@
+/* 
+  Localizable.strings
+  Partner App
+
+  Created by Gustavo Serra on 19/10/2017.
+  Copyright © 2017 iHealthLabs. All rights reserved.
+*/
+
+"applicationTitle" = "Partner App";
+
+// MARK: - SignIn/SignUp Screen Strings
+
+"choicePhotoMessage" = "Choose your photo";
+"choicePhotoCamera" = "Camera";
+"choicePhotoGallery" = "Gallery";
+"choicePhotoCancel" = "Cancel";
+"namePlacaholderLabel" = "Name";
+"heightPlaceholderLabel" = "Height";
+"emailPlaceholderLabel" = "Email";
+"passwordPlaceholderLabel" = "Password";
+"signinTitleButton" = "Sign In";
+"signupTitleButton" = "Sign Up";
+"cancelTitleButton" = "Cancel";
+"signinErrorMessage" = "Your email or/and password are incorrect!";
+"signinMessageOkButton" = "OK";
+
+"profileButton" = "Profile";
+"callApplicationButton" = "Do a Measure";
+"logoutTitleButton" = "Logout";
+"editProfileTitleButton" = "Edit Profile";
+"changePasswordTitleButton" = "Change Password";
+
+// MARK: - Gerenal Use Strings
+
+"fieldsEmptyErrorMessage" = "Some fields are empty!";
+"fieldsEmptyMessageOkButton" = "OK";
+

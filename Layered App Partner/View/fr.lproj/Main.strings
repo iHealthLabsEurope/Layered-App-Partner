@@ -1,0 +1,54 @@
+
+/* Class = "UIButton"; normalTitle = "Sign Up"; ObjectID = "4aR-7s-GlC"; */
+"4aR-7s-GlC.normalTitle" = "Sign Up";
+
+/* Class = "UILabel"; text = "Change Password"; ObjectID = "4hZ-tE-UJr"; */
+"4hZ-tE-UJr.text" = "Change Password";
+
+/* Class = "UITextField"; placeholder = "Name"; ObjectID = "5vE-Nv-qRY"; */
+"5vE-Nv-qRY.placeholder" = "Name";
+
+/* Class = "UIButton"; normalTitle = "Sign Up"; ObjectID = "993-VK-clh"; */
+"993-VK-clh.normalTitle" = "Sign Up";
+
+/* Class = "UILabel"; text = "cm"; ObjectID = "EJ7-ZB-FEf"; */
+"EJ7-ZB-FEf.text" = "cm";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "Ggx-IZ-4gP"; */
+"Ggx-IZ-4gP.placeholder" = "Password";
+
+/* Class = "UIButton"; normalTitle = "Call Suivi Application"; ObjectID = "HBB-Be-Mc1"; */
+"HBB-Be-Mc1.normalTitle" = "Call Suivi Application";
+
+/* Class = "UILabel"; text = "Anne Boche"; ObjectID = "UeL-eR-7vY"; */
+"UeL-eR-7vY.text" = "Anne Boche";
+
+/* Class = "UIButton"; normalTitle = "Profile"; ObjectID = "e6T-Fo-19f"; */
+"e6T-Fo-19f.normalTitle" = "Profile";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "ejm-Zf-tfc"; */
+"ejm-Zf-tfc.placeholder" = "Password";
+
+/* Class = "UIButton"; normalTitle = "Logout"; ObjectID = "fZL-H6-1Yf"; */
+"fZL-H6-1Yf.normalTitle" = "Logout";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "i3M-0P-Twf"; */
+"i3M-0P-Twf.normalTitle" = "Cancel";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "jeQ-Y2-VqG"; */
+"jeQ-Y2-VqG.placeholder" = "Email";
+
+/* Class = "UILabel"; text = "170"; ObjectID = "lDx-sj-liM"; */
+"lDx-sj-liM.text" = "170";
+
+/* Class = "UITextField"; placeholder = "Height (cm)"; ObjectID = "lQ9-RA-2jf"; */
+"lQ9-RA-2jf.placeholder" = "Height (cm)";
+
+/* Class = "UILabel"; text = "Edit Profile"; ObjectID = "mKL-7c-fmM"; */
+"mKL-7c-fmM.text" = "Edit Profile";
+
+/* Class = "UIButton"; normalTitle = "Sign In"; ObjectID = "sJg-H1-r5H"; */
+"sJg-H1-r5H.normalTitle" = "Sign In";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "uEL-6F-56A"; */
+"uEL-6F-56A.placeholder" = "Email";
