@@ -20,7 +20,6 @@
 		EC79492C1FB9E14B00055AF8 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7949271FB9E14B00055AF8 /* SignInViewController.swift */; };
 		EC79492F1FB9E16F00055AF8 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC79492D1FB9E16F00055AF8 /* Colors.swift */; };
 		EC7949301FB9E16F00055AF8 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC79492E1FB9E16F00055AF8 /* Extentions.swift */; };
-		EC7949311FB9E67300055AF8 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC7949161FB9D79E00055AF8 /* Info.plist */; };
 		EC7949331FB9EB9C00055AF8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7949321FB9EB9C00055AF8 /* User.swift */; };
 		EC79493A1FB9ED1700055AF8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EC79493C1FB9ED1700055AF8 /* InfoPlist.strings */; };
 		EC79493D1FB9ED1C00055AF8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EC79493F1FB9ED1C00055AF8 /* Localizable.strings */; };
@@ -227,7 +226,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC7949311FB9E67300055AF8 /* Info.plist in Resources */,
 				EC79493D1FB9ED1C00055AF8 /* Localizable.strings in Resources */,
 				EC7949151FB9D79E00055AF8 /* LaunchScreen.storyboard in Resources */,
 				EC7949121FB9D79E00055AF8 /* Assets.xcassets in Resources */,
@@ -470,7 +468,7 @@
 				INFOPLIST_FILE = "Layered App Partner/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "eu.ihealthlabs.Layered-App-Partner";
+				PRODUCT_BUNDLE_IDENTIFIER = "eu.ihealthlabs.demo.Layered-App-Partner";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -487,7 +485,7 @@
 				INFOPLIST_FILE = "Layered App Partner/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "eu.ihealthlabs.Layered-App-Partner";
+				PRODUCT_BUNDLE_IDENTIFIER = "eu.ihealthlabs.demo.Layered-App-Partner";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
