@@ -58,7 +58,7 @@ class CallerViewController: UIViewController {
     
     @IBAction func callApplicationButtonClicked(_ sender: Any) {
         
-        self.openAppURL("ihealth-layer://?cmd=3&addType=0&deviceModel=501&unit=4&ver=100") { (result) in
+        self.openAppURL("ihealth-layer://?cmd=3&addType=0&devicemodel=300&unit=4&ver=100") { (result) in
             print("Open: \(result)")
         }
     }

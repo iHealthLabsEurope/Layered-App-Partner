@@ -59,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             let status = queryItems?.filter { return $0.name == "status" }
             
-            if status?.first?.value == "3855" {
+            if status?.first?.value == "3855" || status?.first?.value == "0" {
                 
                 let macQueryItem = queryItems?.filter { return $0.name == "mac" }
                 let resultQueryItem = queryItems?.filter { return $0.name == "result" }
@@ -83,20 +83,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         }
                     }
                     
-                    if let newWeight = arrayResult?.first {
+                    if let newMeasurement = arrayResult?.first {
                         
-                        print("Weight readed: \(String(describing: newWeight["weight"])) at \(String(describing: newWeight["measured_at"]))")
+                        print("Oxygen saturation read: \(String(describing: newMeasurement["oxygen_saturation"])) at \(String(describing: newMeasurement["measured_at"]))")
                         
-                        var weights: [Dictionary<String,Any>]? = UserDefaults.standard.value(forKey: "WEIGHTS") as? [Dictionary<String,Any>]
+                        var measurements: [Dictionary<String,Any>]? = UserDefaults.standard.value(forKey: "MEASUREMENTS") as? [Dictionary<String,Any>]
                         
-                        if let _ = weights {
+                        if let _ = measurements {
                             
-                            weights?.append(newWeight)
+                            measurements?.append(newMeasurement)
                             
-                            UserDefaults.standard.set(weights, forKey: "WEIGHTS")
+                            UserDefaults.standard.set(measurements, forKey: "MEASUREMENTS")
                         } else {
                             
-                            UserDefaults.standard.set([newWeight], forKey: "WEIGHTS")
+                            UserDefaults.standard.set([newMeasurement], forKey: "MEASUREMENTS")
                         }
                     }
                 }

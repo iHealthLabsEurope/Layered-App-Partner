@@ -12,19 +12,19 @@ class WeightsViewController: UIViewController {
 
     @IBOutlet weak var weightTableView: UITableView!
     
-    var groupedSortedWeights: Array<Any> = Array()
+    var groupedSortedMeasurements: Array<Any> = Array()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        guard let weights: [Dictionary<String,Any>] = UserDefaults.standard.value(forKey: "WEIGHTS") as? [Dictionary<String,Any>]
+        guard let measurements: [Dictionary<String,Any>] = UserDefaults.standard.value(forKey: "MEASUREMENTS") as? [Dictionary<String,Any>]
         else { return }
         
-        var groupedWeights: [Date:[Dictionary<String,Any>]] = [:]
+        var groupedMeasurements: [Date:[Dictionary<String,Any>]] = [:]
         
-        for weight in weights.reversed() {
+        for measurement in measurements.reversed() {
             
-            if let measureDate = weight["measured_at"] as? String {
+            if let measureDate = measurement["measured_at"] as? String {
                 
                 let measureDateComponents = measureDate.components(separatedBy: " ")
                 
@@ -32,15 +32,15 @@ class WeightsViewController: UIViewController {
                 dateFormatter.dateFormat = "yyyy-MM-dd"
                 
                 if let dateFormatted = dateFormatter.date(from: measureDateComponents[0]) {
-                    if case nil = groupedWeights[dateFormatted]?.append(weight) {
+                    if case nil = groupedMeasurements[dateFormatted]?.append(measurement) {
                         
-                        groupedWeights[dateFormatted] = [weight]
+                        groupedMeasurements[dateFormatted] = [measurement]
                     }
                 }
             }
         }
         
-        self.groupedSortedWeights = groupedWeights.sorted(by: { $0.key.compare($1.key) == .orderedDescending })
+        self.groupedSortedMeasurements = groupedMeasurements.sorted(by: { $0.key.compare($1.key) == .orderedDescending })
     }
     
     @IBAction func exitButtonClicked(_ sender: Any) {
@@ -57,15 +57,15 @@ extension WeightsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         
-        return self.groupedSortedWeights.count
+        return self.groupedSortedMeasurements.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if let sectionDateWeights = self.groupedSortedWeights[section] as? (Date, Any),
-            let sectionWeights = sectionDateWeights.1 as? [Dictionary<String,Any>] {
+        if let sectionDateMeasurements = self.groupedSortedMeasurements[section] as? (Date, Any),
+            let sectionMeasurements = sectionDateMeasurements.1 as? [Dictionary<String,Any>] {
             
-            return sectionWeights.count
+            return sectionMeasurements.count
         }
         
         return 0
@@ -73,9 +73,9 @@ extension WeightsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
-        if let sectionDateWeights = self.groupedSortedWeights[section] as? (Date, Any) {
+        if let sectionDateMeasurements = self.groupedSortedMeasurements[section] as? (Date, Any) {
             
-            let measureDate = sectionDateWeights.0
+            let measureDate = sectionDateMeasurements.0
             
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd MMM, yyyy"
@@ -90,12 +90,13 @@ extension WeightsViewController: UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "WeightCell", for: indexPath)
         
-        if  let sectionDateWeights = self.groupedSortedWeights[indexPath.section] as? (Date, Any),
-            let sectionWeights = sectionDateWeights.1 as? [Dictionary<String,Any>],
-            let measureDate = sectionWeights[indexPath.row]["measured_at"] as? String,
-            let measureWeight = sectionWeights[indexPath.row]["weight"] as? String {
+        if  let sectionDateMeasurements = self.groupedSortedMeasurements[indexPath.section] as? (Date, Any),
+            let sectionMeasurement = sectionDateMeasurements.1 as? [Dictionary<String,Any>],
+            let measureDate = sectionMeasurement[indexPath.row]["measured_at"] as? String,
+            let measureOxygenSaturation = sectionMeasurement[indexPath.row]["oxygen_saturation"] as? String,
+            let measureHeartRate = sectionMeasurement[indexPath.row]["heart_rate"] as? String {
             
-            cell.textLabel?.text = measureWeight
+            cell.textLabel?.text = "\(measureOxygenSaturation)% - \(measureHeartRate)bpm"
             
             let measureDateComponents = measureDate.components(separatedBy: " ")[1]
             let measureTimeComponents = measureDateComponents.components(separatedBy: ":")
